@@ -115,6 +115,9 @@ public abstract class BaseWindowConsumer implements IVideoConsumer {
     }
 
     private void initUniqueGLEnv(EGLContext shareContext) {
+        if (uniqueThread != null) {
+            return;
+        }
         uniqueIsQuit = false;
         uniqueThread = new HandlerThread(this.getClass().getSimpleName()) {
             @Override
